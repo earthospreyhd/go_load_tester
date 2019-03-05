@@ -19,7 +19,7 @@ func main () {
     }
     var averageTime time.Duration
     //receive response times
-    for i:=0; i < NUMTHREADS; i++ {
+    for i := 0; i < NUMTHREADS; i++ {
         select {
             case requestTime := <-timeChannel:
                 averageTime += requestTime
