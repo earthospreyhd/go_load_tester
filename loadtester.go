@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
-	"os"
+    "fmt"
+    "os"
     "net/http"
     "time"
 )
@@ -13,21 +13,21 @@ const DEFAULT_URL = "http://localhost:5050"
 
 func main () {
 
-	cmdArguments := os.Args[1:]
-	for _, element := range cmdArguments {
-		if element == "-c" {
-			fmt.Println("we have found an option!")
-		}
-	}
+    cmdArguments := os.Args[1:]
+    for _, element := range cmdArguments {
+        if element == "-c" {
+            fmt.Println("we have found an option!")
+        }
+    }
 
-	url := DEFAULT_URL
+    url := DEFAULT_URL
     //Channel for threads to send their response times
     timeChannel := make (chan time.Duration)
     //spawn threads
     for i := 0; i < NUMTHREADS; i++ {
         go makeResponse(timeChannel, url)
     }
-    var averageTime time.Duration 
+    var averageTime time.Duration
     //receive response times
     for i := 0; i < NUMTHREADS; i++ {
         select {
